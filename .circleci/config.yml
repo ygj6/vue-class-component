@@ -3,10 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:12-browsers
-  machine:
-    node:
-      version: 14.15.1
+    - image: circleci/node:14-browsers
 
 jobs:
   install:
@@ -60,6 +57,8 @@ workflows:
   version: 2
   build-and-test:
     jobs:
+      -node/test:
+        version: 14.15.1
       - install
       - build:
           requires:
