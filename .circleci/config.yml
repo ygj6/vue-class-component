@@ -4,6 +4,8 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:14-browsers
+  orbs:
+    node: circleci/node14.15.1
 
 jobs:
   install:
@@ -55,10 +57,9 @@ jobs:
 
 workflows:
   version: 2
-  matrix-tests:
+  app-tests:
     jobs:
-     - node/test:
-        version: 14.15.1
+      - node/test
   build-and-test:
     jobs:
       - install
