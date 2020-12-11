@@ -55,10 +55,12 @@ jobs:
 
 workflows:
   version: 2
+  matrix-tests:
+    jobs:
+     - node/test:
+        version: 14.15.1
   build-and-test:
     jobs:
-      -node/test:
-        version: 14.15.1
       - install
       - build:
           requires:
